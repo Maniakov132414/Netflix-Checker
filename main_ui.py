@@ -689,6 +689,8 @@ class NetflixCheckerGUI:
                 
         total_tasks = len(tasks)
         left = [total_tasks]
+        proxy_cursor = [0]
+        proxy_cursor_lock = threading.Lock()
         
         self.stats_queue.put({
             "counts": dict(counts), "plan_counts": dict(plan_counts),
@@ -708,7 +710,13 @@ class NetflixCheckerGUI:
             avail = [i for i in range(len(proxies)) if i not in used]
             if not avail:
                 avail = list(range(len(proxies)))
-            idx = random.choice(avail)
+            with proxy_cursor_lock:
+                for _ in range(len(proxies)):
+                    rotated = proxy_cursor[0] % len(proxies)
+                    proxy_cursor[0] = (proxy_cursor[0] + 1) % len(proxies)
+                    if rotated not in used:
+                        return proxies[rotated], rotated
+            idx = avail[0]
             return proxies[idx], idx
             
         def handle(info, netscape, path, file, subscribed, cookies, remove=True):
