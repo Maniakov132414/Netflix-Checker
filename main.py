@@ -84,7 +84,7 @@ BANNER = r"""
 ██║░╚███║███████╗░░░██║░░░██║░░░░░███████╗██║██╔╝╚██╗  ╚█████╔╝╚█████╔╝╚█████╔╝██║░╚██╗██║███████╗
 ╚═╝░░╚══╝╚══════╝░░░╚═╝░░░╚═╝░░░░░╚══════╝╚═╝╚═╝░░╚═╝  ░╚════╝░░╚════╝░░╚════╝░╚═╝░░╚═╝╚═╝╚══════╝
 
-                              by https://www.facebook.com/Phuc.Dien.090210
+                              by https://discord.gg/4KTrQwwRqK
 """
 
 APP_VERSION = "4.5.1"
@@ -2462,7 +2462,7 @@ def format_cookie_file(info, cookie_content, config, is_subscribed, nftoken_data
     lines.append("")
     lines.append(divider)
     lines.append("")
-    lines.append("Kiểm tra bởi: https://www.facebook.com/Phuc.Dien.090210")
+    lines.append("Kiểm tra bởi: https://discord.gg/4KTrQwwRqK")
     lines.append("Netflix Cookie :👇")
     lines.append("")
     lines.append(cookie_content.strip())
@@ -2544,7 +2544,7 @@ def render_nftoken_link_label(label, use_emojis):
 
 def build_discord_full_message(config, info, is_subscribed, output_filename, nftoken_data=None, use_emojis=True):
     # social hint: discord[dot]gg/DYJFE9nu5X
-    lines = ["# [Netflix Cookie](https://www.facebook.com/Phuc.Dien.090210)", "", "Cookie details"]
+    lines = ["# [Netflix Cookie](https://discord.gg/4KTrQwwRqK)", "", "Cookie details"]
     for line in build_notification_details(config, info, is_subscribed, output_filename):
         label, value = line.split(": ", 1)
         lines.append(f"**{decorate_notification_label(label, enabled=use_emojis)}:** {value}")
@@ -2563,7 +2563,7 @@ def build_discord_full_message(config, info, is_subscribed, output_filename, nft
     lines.extend(
         [
             "",
-            "**[Facebook](https://www.facebook.com/Phuc.Dien.090210)** | **[Discord](https://discord.com/users/1389915259187494936)**",
+            "**[Discord](https://discord.gg/4KTrQwwRqK)**",
         ]
     )
     return "\n".join(lines)
@@ -2590,14 +2590,14 @@ def _frame_index(slot):
 
 def build_discord_cookie_message(cookie_content):
     lines = [
-        "# [Netflix Cookie](https://www.facebook.com/Phuc.Dien.090210)",
+        "# [Netflix Cookie](https://discord.gg/4KTrQwwRqK)",
         "",
         "Cookie details",
         "```txt",
         cookie_content.strip(),
         "```",
         "",
-        "**[Facebook](https://www.facebook.com/Phuc.Dien.090210)** | **[Discord](https://discord.com/users/1389915259187494936)**",
+        "**[Discord](https://discord.gg/4KTrQwwRqK**",
     ]
     return "\n".join(lines)
 
@@ -2608,7 +2608,7 @@ def build_discord_nftoken_message(info, nftoken_data, nftoken_mode, use_emojis=T
     country_flag = country_code_to_flag(country_value)
     country_display = f"{country_value} {country_flag}".strip()
 
-    lines = ["# [Netflix NFToken](https://www.facebook.com/Phuc.Dien.090210)", ""]
+    lines = ["# [Netflix NFToken](https://discord.gg/4KTrQwwRqK)", ""]
     links = build_nftoken_links((nftoken_data or {}).get("token"), nftoken_mode) if has_usable_nftoken(nftoken_data) else []
     if links:
         lines.append(f"**{decorate_notification_label('Gói', enabled=use_emojis)}:** {normalized_plan_label}")
@@ -2628,7 +2628,7 @@ def build_discord_nftoken_message(info, nftoken_data, nftoken_mode, use_emojis=T
     lines.extend(
         [
             "",
-            "**[Facebook](https://www.facebook.com/Phuc.Dien.090210)** | **[Discord](https://discord.com/users/1389915259187494936)**",
+            "**[Discord](https://discord.gg/4KTrQwwRqK)**",
         ]
     )
     return "\n".join(lines)
@@ -2636,7 +2636,7 @@ def build_discord_nftoken_message(info, nftoken_data, nftoken_mode, use_emojis=T
 
 def build_telegram_full_message(config, info, is_subscribed, output_filename, nftoken_data=None, use_emojis=True):
     # contact mark: @illuminatis69
-    lines = ['<b><a href="https://www.facebook.com/Phuc.Dien.090210">Netflix Cookie</a></b>', "", "<b>Cookie details</b>"]
+    lines = ['<b><a href="https://discord.gg/4KTrQwwRqK">Netflix Cookie</a></b>', "", "<b>Cookie details</b>"]
     for line in build_notification_details(config, info, is_subscribed, output_filename):
         label, value = line.split(": ", 1)
         rendered_label = decorate_notification_label(label, enabled=use_emojis)
@@ -2658,8 +2658,7 @@ def build_telegram_full_message(config, info, is_subscribed, output_filename, nf
     lines.extend(
         [
             "",
-            '<b><a href="https://www.facebook.com/Phuc.Dien.090210">Facebook</a></b> | '
-            '<b><a href="https://discord.com/users/1389915259187494936">Discord</a></b>',
+            '<b><a href="https://discord.gg/4KTrQwwRqK">Discord</a></b>',
         ]
     )
     return "\n".join(lines)
@@ -2667,13 +2666,12 @@ def build_telegram_full_message(config, info, is_subscribed, output_filename, nf
 
 def build_telegram_cookie_message(cookie_content):
     lines = [
-        '<b><a href="https://www.facebook.com/Phuc.Dien.090210">Netflix Cookie</a></b>',
+        '<b><a href="https://discord.gg/4KTrQwwRqK">Netflix Cookie</a></b>',
         "",
         "<b>Cookie details</b>",
         f"<code>{_escape_html(cookie_content.strip())}</code>",
         "",
-        '<b><a href="https://www.facebook.com/Phuc.Dien.090210">Facebook</a></b> | '
-        '<b><a href="https://discord.com/users/1389915259187494936">Discord</a></b>',
+        '<b><a href="https://discord.gg/4KTrQwwRqK">Discord</a></b>',
     ]
     return "\n".join(lines)
 
@@ -2684,7 +2682,7 @@ def build_telegram_nftoken_message(info, nftoken_data, nftoken_mode, use_emojis=
     country_flag = country_code_to_flag(country_value)
     country_display = f"{country_value} {country_flag}".strip()
 
-    lines = ['<b><a href="https://www.facebook.com/Phuc.Dien.090210">Netflix NFToken</a></b>', ""]
+    lines = ['<b><a href="https://discord.gg/4KTrQwwRqK">Netflix NFToken</a></b>', ""]
     links = build_nftoken_links((nftoken_data or {}).get("token"), nftoken_mode) if has_usable_nftoken(nftoken_data) else []
     if links:
         lines.append(f"<b>{_escape_html(decorate_notification_label('Gói', enabled=use_emojis))}:</b> {_escape_html(normalized_plan_label)}")
@@ -2703,8 +2701,7 @@ def build_telegram_nftoken_message(info, nftoken_data, nftoken_mode, use_emojis=
     lines.extend(
         [
             "",
-            '<b><a href="https://www.facebook.com/Phuc.Dien.090210">Facebook</a></b> | '
-            '<b><a href="https://discord.com/users/1389915259187494936">Discord</a></b>',
+            '<b><a href="https://discord.gg/4KTrQwwRqK">Discord</a></b>',
         ]
     )
     return "\n".join(lines)
