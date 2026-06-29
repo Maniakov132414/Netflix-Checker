@@ -2955,13 +2955,17 @@ def check_cookies(num_threads=30, config=None):
 
     retryable_status_codes = {403, 429, 500, 502, 503, 504}
 
-    cookie_files = os.listdir(cookies_folder) if os.path.exists(cookies_folder) else []
-    cookie_files = [f for f in cookie_files if f.lower().endswith((".txt", ".json"))]
     cookie_tasks = []
     source_bundle_states = {}
+    
+    all_cookie_data = []
+    for root, dirs, files in os.walk(cookies_folder):
+        for f in files:
+            if f.lower().endswith((".txt", ".json")) and not f.startswith("."):
+                all_cookie_data.append((f, os.path.join(root, f)))
 
-    for cookie_file in cookie_files:
-        cookie_path = os.path.join(cookies_folder, cookie_file)
+    for cookie_file, cookie_path in all_cookie_data:
+
         try:
             with open(cookie_path, "r", encoding="utf-8", errors="ignore") as f:
                 content = f.read()
