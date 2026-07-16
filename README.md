@@ -1,1 +1,1 @@
-Muốn dùng Theme thì tải main_ui.py nha bọn đầu ***
+T ko chịu trách nhiệm cho những gì bây sẽ bị
